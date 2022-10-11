@@ -1,0 +1,43 @@
+curl -X POST "https://salmanlab9.cognitiveservices.azure.com/language/:analyze-conversations?api-version=2022-05-01" -H "Ocp-Apim-Subscription-Key: c71597dd81dc44408ea7d619be282209"  -H "Apim-Request-Id: 4ffcac1c-b2fc-48ba-bd6d-b69d9942995a" -H "Content-Type: application/json" -d "{\"kind\":\"Conversation\",\"analysisInput\":{\"conversationItem\":{\"id\":\"1\",\"text\":\"What's today's date?\",\"modality\":\"text\",\"language\":\"EN\",\"participantId\":\"PARTICIPANT_ID_HERE\"}},\"parameters\":{\"projectName\":\"clock\",\"verbose\":true,\"deploymentName\":\"production\",\"stringIndexType\":\"TextElement_V8\"}}"
+
+curl -X POST "https://salmanlab9.cognitiveservices.azure.com/language/:analyze-conversations?api-version=2022-05-01" -H "Ocp-Apim-Subscription-Key: c71597dd81dc44408ea7d619be282209"  -H "Apim-Request-Id: 4ffcac1c-b2fc-48ba-bd6d-b69d9942995a" -H "Content-Type: application/json" -d "{\"kind\":\"Conversation\",\"analysisInput\":{\"conversationItem\":{\"id\":\"1\",\"text\":\"What time is it in Glasgow?\",\"modality\":\"text\",\"language\":\"EN\",\"participantId\":\"PARTICIPANT_ID_HERE\"}},\"parameters\":{\"projectName\":\"clock\",\"verbose\":true,\"deploymentName\":\"production\",\"stringIndexType\":\"TextElement_V8\"}}"
+
+
+--- outputs
+{
+  "kind": "ConversationResult",
+  "result": {
+    "query": "What time is it in Glasgow?",
+    "prediction": {
+      "topIntent": "GetTime",
+      "projectKind": "Conversation",
+      "intents": [
+        {
+          "category": "GetTime",
+          "confidenceScore": 0.9386673
+        },
+        {
+          "category": "GetDate",
+          "confidenceScore": 0.6793507
+        },
+        {
+          "category": "GetDay",
+          "confidenceScore": 0.6555354
+        },
+        {
+          "category": "None",
+          "confidenceScore": 0
+        }
+      ],
+      "entities": [
+        {
+          "category": "Location",
+          "text": "Glasgow",
+          "offset": 19,
+          "length": 7,
+          "confidenceScore": 1
+        }
+      ]
+    }
+  }
+}
